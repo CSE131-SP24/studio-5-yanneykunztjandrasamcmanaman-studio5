@@ -14,8 +14,9 @@ public class Methods {
 	 * @return the Euclidean distance between (x1,y1) and (x2,y2)
 	 */
 	public static double distanceBetween(double x1, double y1, double x2, double y2) {
-		double distance = 0;
+		double distance = Math.sqrt(Math.abs((x1-x2)*(x1-x2)) + Math.abs((y1-y2)*(y1-y2)));
 		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
+		
 		
 		return distance;
 	}
@@ -30,21 +31,28 @@ public class Methods {
 	public static void drawBullsEye(double x, double y, double radius) {
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledCircle(x, y, radius);
-
+	
 		// TODO: Draw the remaining rings of the bull's eye
 		// Blue ring with 3.0/4.0 the radius
 		// suggested rgb values: 0, 109, 219
+		StdDraw.setPenColor(0,109,219);
+		StdDraw.filledCircle(x, y, radius * .75);
+		
 
 		
 
 		// Red ring with 1.0/2.0 the radius
 		// suggested rgb values: 146, 0, 0
-
+		
+		StdDraw.setPenColor(146,0,0);
+		StdDraw.filledCircle(x, y, radius * .5);
 		
 
 		// Yellow ring with 1.0/4.0 the radius
 		// suggested rgb values: 255, 255, 109
-
+		
+		StdDraw.setPenColor(255,255,109);
+		StdDraw.filledCircle(x, y, radius * .25);
 		
 	}
 
@@ -55,13 +63,23 @@ public class Methods {
 	 * @param source      the source String
 	 * @param target      the target character to be replaced
 	 * @param replacement the replacement String
+	 * @return 
 	 * 
 	 * @return the String which results from substituting all of the target
 	 *         characters in the source String with the replacement String
 	 */
+	
 	public static String substituteAll(String source, char target, String replacement) {
 		String result = "";
 		// TODO: Finish this method
+		
+		for(int x = 0; x <= source.length() - 1 ; x++) {
+			if (source.charAt(x) == target) {
+				result += replacement;
+			} else {
+				result += source.charAt(x);
+			}
+		}
 		
 		return result;
 	}
@@ -75,9 +93,13 @@ public class Methods {
 	public static int arraySum(int[] values) {
 		int sum = 0;
 		// FIXME: Compute the sum of the values in an array
-		
+		for(int x = 0 ; x < values.length ; x++) {
+			sum += values[x];
+		}
 		return sum;
 	}
+	
+	
 
 	/**
 	 * Return an array of a given size filled with the provided value
@@ -87,9 +109,11 @@ public class Methods {
 	 * @return and array of size that's filled with value
 	 */
 	public static int[] filledArray(int length, int value) {
-		int[] values = null; // FIXME: Create an array of the appropriate size
+		int[] values = new int[length]; // FIXME: Create an array of the appropriate size
 		// TODO: Finish this method
-
+		for(int x = 0; x < length ; x++) {
+			values[x] = value;
+		}
 		
 
 		return values;
